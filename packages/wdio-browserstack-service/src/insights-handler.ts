@@ -52,6 +52,9 @@ export default class InsightsHandler {
     }
 
     async beforeHook (test: Frameworks.Test, context: any) {
+        if (!test) {
+            return
+        }
         const fullTitle = `${test.parent} - ${test.title}`
         const hookId = uuidv4()
         this._tests[fullTitle] = {
@@ -65,6 +68,9 @@ export default class InsightsHandler {
     }
 
     async afterHook (test: Frameworks.Test, result: Frameworks.TestResult) {
+        if (!test) {
+            return
+        }
         const fullTitle = getUniqueIdentifier(test)
         if (this._tests[fullTitle]) {
             this._tests[fullTitle].finishedAt = (new Date()).toISOString()
