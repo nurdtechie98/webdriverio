@@ -453,6 +453,11 @@ describe('afterHook', () => {
         expect(insightsHandler['_tests']).toEqual({ 'test title': { finishedAt: '2020-01-01T00:00:00.000Z', } })
         expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(1)
     })
+
+    it('return if test data is empty', async () => {
+        await insightsHandler.beforeHook( undefined as any, {} as any)
+        expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(0)
+    })
 })
 
 describe('getIntegrationsObject', () => {
