@@ -419,6 +419,11 @@ describe('beforeHook', () => {
         expect(insightsHandler['_tests']).toEqual({ 'parent - test': { uuid: '123456789', startedAt: '2020-01-01T00:00:00.000Z' } })
         expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(1)
     })
+
+    it('return if test data is empty', async () => {
+        await insightsHandler.beforeHook( undefined as any, {} as any)
+        expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(0)
+    })
 })
 
 describe('afterHook', () => {
@@ -447,6 +452,11 @@ describe('afterHook', () => {
         await insightsHandler.afterHook({ parent: 'parent', title: 'test' } as any, {} as any)
         expect(insightsHandler['_tests']).toEqual({ 'test title': { finishedAt: '2020-01-01T00:00:00.000Z', } })
         expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(1)
+    })
+
+    it('return if test data is empty', async () => {
+        await insightsHandler.afterHook( undefined as any, {} as any)
+        expect(insightsHandler['sendTestRunEvent']).toBeCalledTimes(0)
     })
 })
 
