@@ -65,7 +65,7 @@ export default class BrowserstackService implements Services.ServiceInstance {
             config.user = 'NotSetUser'
         }
 
-        if (!config.key && !(testObservabilityOptions && testObservabilityOptions.user)) {
+        if (!config.key && !(testObservabilityOptions && testObservabilityOptions.key)) {
             config.key = 'NotSetKey'
         }
         this._config.user = config.user
