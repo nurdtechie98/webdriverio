@@ -63,7 +63,7 @@ export default class BrowserstackService implements Services.ServiceInstance {
         // if no user and key is specified even though a browserstack service was
         // provided set user and key with values so that the session request
         // will fail
-        const testObservabilityOptions = this._options.testObservabilityOptions;
+        const testObservabilityOptions = this._options.testObservabilityOptions
         if (!config.user && !(testObservabilityOptions && testObservabilityOptions.user)) {
             config.user = 'NotSetUser'
         }
