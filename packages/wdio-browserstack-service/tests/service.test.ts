@@ -151,7 +151,7 @@ describe('beforeSession', () => {
                 { user: 'foo', key: 'bar' } as any
             )
             observabilityService.beforeSession({} as any)
-            expect(observabilityService['_config']).toEqual({ user: 'foo', key: 'random' })
+            expect(observabilityService['_config']).toEqual({ user: undefined, key: undefined })
         })
 
         it('should set set some default value if user and key not in observability options', () => {
